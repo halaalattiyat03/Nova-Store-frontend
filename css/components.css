@@ -1,0 +1,1041 @@
+/* ==========================================================================
+   NOVA STORE - COMPONENTS & MODULES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Announcement Bar & Top Header
+   -------------------------------------------------------------------------- */
+.top-bar {
+  background-color: var(--color-secondary);
+  color: #94A3B8;
+  font-size: 0.825rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-secondary-light);
+}
+
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-bar-timer {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+.top-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.top-bar-link {
+  color: #CBD5E1;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.top-bar-link:hover {
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Header & Navigation Bar
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-card-border);
+  transition: all var(--transition-normal);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: rgba(15, 23, 42, 0.85);
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-text);
+  letter-spacing: -0.04em;
+}
+
+.logo-img {
+  height: 38px;
+  max-height: 42px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.logo-icon i {
+  display: none;
+}
+
+.logo-icon::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-color: #FFFFFF;
+  border-radius: 9999px;
+}
+
+.logo-accent {
+  color: var(--color-primary);
+}
+
+/* Nav Search Bar */
+.nav-search {
+  flex: 1;
+  max-width: 520px;
+  position: relative;
+}
+
+.nav-search-input-wrap {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-input-bg);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-full);
+  padding: 0.35rem 0.5rem 0.35rem 1.25rem;
+  transition: all var(--transition-normal);
+}
+
+.nav-search-input-wrap:focus-within {
+  border-color: var(--color-primary);
+  background-color: var(--color-card);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.nav-search-input {
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.nav-search-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast);
+}
+
+.nav-search-btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Search Auto-complete Suggestions Modal Dropdown */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-dropdown);
+  max-height: 380px;
+  overflow-y: auto;
+  display: none;
+}
+
+.search-suggestions.active {
+  display: block;
+  animation: slideUp var(--transition-fast);
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-divider);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: var(--color-input-bg);
+}
+
+.suggestion-thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-bg);
+}
+
+.suggestion-info {
+  flex: 1;
+}
+
+.suggestion-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+}
+
+.suggestion-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Nav Menu Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius-full);
+  transition: width var(--transition-normal);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+/* Header Icons Group */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-action-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+  background-color: var(--color-input-bg);
+}
+
+.nav-action-btn:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.badge-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-card);
+  animation: scaleUp var(--transition-fast);
+}
+
+/* Mobile Toggle Hamburger */
+.mobile-nav-toggle {
+  display: none;
+  font-size: 1.35rem;
+  background: none;
+  color: var(--color-text);
+  padding: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. Mobile Navigation Drawer Sidebar
+   -------------------------------------------------------------------------- */
+.mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal-backdrop);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal);
+}
+
+.mobile-drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  max-width: 85vw;
+  background-color: var(--color-card);
+  z-index: var(--z-drawer);
+  transform: translateX(-100%);
+  transition: transform var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.mobile-drawer.active {
+  transform: translateX(0);
+}
+
+.mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.mobile-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mobile-drawer-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. Product Card Component
+   -------------------------------------------------------------------------- */
+.product-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.product-thumb-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: #F1F5F9;
+}
+
+[data-theme="dark"] .product-thumb-wrap {
+  background-color: #0F172A;
+}
+
+.product-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-thumb {
+  transform: scale(1.08);
+}
+
+/* Product Card Floating Badges */
+.product-badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
+/* Floating Action Overlay Buttons on Image */
+.product-card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all var(--transition-normal);
+}
+
+.product-card:hover .product-card-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.action-btn-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--color-card);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
+}
+
+.action-btn-circle:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.action-btn-circle.active {
+  background-color: var(--color-danger);
+  color: #FFFFFF;
+}
+
+.product-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.7em;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.stars-wrap {
+  color: var(--color-accent);
+  display: flex;
+  gap: 2px;
+}
+
+.rating-count {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.product-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-card-border);
+}
+
+.price-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price-current {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+}
+
+.price-original {
+  font-size: 0.875rem;
+  color: var(--color-text-subtle);
+  text-decoration: line-through;
+}
+
+/* Horizontal List Card Variant for Shop List View */
+.product-card.list-view {
+  flex-direction: row;
+}
+
+.product-card.list-view .product-thumb-wrap {
+  width: 240px;
+  aspect-ratio: auto;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Cart Slide-Over Drawer
+   -------------------------------------------------------------------------- */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal-backdrop);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal);
+}
+
+.cart-drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 420px;
+  max-width: 100vw;
+  background-color: var(--color-card);
+  z-index: var(--z-drawer);
+  transform: translateX(100%);
+  transition: transform var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+}
+
+.cart-drawer.active {
+  transform: translateX(0);
+}
+
+.cart-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.cart-drawer-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--color-input-bg);
+  padding: 0.85rem;
+  border-radius: var(--border-radius-md);
+  position: relative;
+}
+
+.cart-item-thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-bg);
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.cart-item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.qty-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cart-item-remove {
+  color: var(--color-text-subtle);
+  padding: 0.35rem;
+}
+.cart-item-remove:hover {
+  color: var(--color-danger);
+}
+
+.cart-drawer-footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-card-border);
+  background-color: var(--color-card);
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.cart-summary-total {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-divider);
+}
+
+/* --------------------------------------------------------------------------
+   6. Modals (Quick View, Compare, Newsletter, Image Zoom)
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: var(--z-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.92);
+  transition: transform var(--transition-normal);
+}
+
+.modal-backdrop.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+/* --------------------------------------------------------------------------
+   7. Toast Notifications
+   -------------------------------------------------------------------------- */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 420px;
+  padding: 1rem 1.25rem;
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  animation: slideUp var(--transition-normal);
+  transition: all var(--transition-fast);
+}
+
+.toast-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.toast-success .toast-icon { background-color: var(--color-success-bg); color: var(--color-success); }
+.toast-error .toast-icon { background-color: var(--color-danger-bg); color: var(--color-danger); }
+.toast-info .toast-icon { background-color: var(--color-info-bg); color: var(--color-info); }
+
+.toast-body {
+  flex: 1;
+}
+
+.toast-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.toast-message {
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. Floating AI Chat Widget & Back to Top
+   -------------------------------------------------------------------------- */
+.floating-actions {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: var(--z-tooltip);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.floating-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--border-radius-full);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: all var(--transition-normal);
+}
+
+.btn-chat-ai {
+  background: linear-gradient(135deg, var(--color-primary), #6366F1);
+  color: #FFFFFF;
+}
+
+.btn-chat-ai:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-back-top {
+  background-color: var(--color-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-card-border);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.btn-back-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-back-top:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+}
+
+/* AI Chat Window Popup */
+.ai-chat-window {
+  position: fixed;
+  bottom: 5.5rem;
+  left: 2rem;
+  width: 360px;
+  max-width: calc(100vw - 3rem);
+  height: 480px;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: all var(--transition-normal);
+}
+
+.ai-chat-window.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.chat-header {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary-dark));
+  color: #FFFFFF;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background-color: var(--color-bg);
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-lg);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.chat-bubble-bot {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  color: var(--color-text);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-bubble-user {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-input-wrap {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--color-card-border);
+  display: flex;
+  gap: 0.5rem;
+  background-color: var(--color-card);
+}
+
+.chat-input {
+  flex: 1;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.85rem;
+  background-color: var(--color-input-bg);
+  border-radius: var(--border-radius-md);
+}
+
+/* --------------------------------------------------------------------------
+   9. Loading Skeletons
+   -------------------------------------------------------------------------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-divider) 25%, var(--color-card-border) 50%, var(--color-divider) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--border-radius-md);
+}
+
+/* --------------------------------------------------------------------------
+   10. Bottom Floating Compare Bar
+   -------------------------------------------------------------------------- */
+.compare-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-secondary);
+  color: #FFFFFF;
+  padding: 1rem 0;
+  z-index: var(--z-sticky);
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+}
+
+.compare-bar.active {
+  transform: translateY(0);
+}
+
+.compare-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.compare-thumbs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.compare-thumb-slot {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--border-radius-md);
+  border: 1px dashed rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.compare-thumb-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

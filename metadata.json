@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Remix: Nova Store",
+  "description": "Nova Store - A modern frontend e-commerce web application featuring interactive product showcase, filtering, cart, and wishlist (Frontend only).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

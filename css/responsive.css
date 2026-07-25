@@ -1,0 +1,142 @@
+/* ==========================================================================
+   NOVA STORE - RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Large Desktop (1280px and down) */
+@media (max-width: 1280px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* Laptop & Desktop (1024px and down) */
+@media (max-width: 1024px) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.75rem; }
+
+  .nav-links {
+    display: none; /* Collapsed into mobile drawer */
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .nav-search {
+    max-width: 320px;
+  }
+
+  .shop-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .shop-sidebar {
+    display: none; /* Toggled via filter modal on mobile */
+  }
+
+  .shop-sidebar.active-mobile {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    background-color: var(--color-card);
+    padding: 2rem;
+    overflow-y: auto;
+  }
+
+  .product-details-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .checkout-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tablet (768px and down) */
+@media (max-width: 768px) {
+  .top-bar-inner {
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .navbar-inner {
+    height: 70px;
+  }
+
+  .nav-search {
+    display: none; /* Opens as full-screen overlay in mobile if tapped */
+  }
+
+  .hero-slide {
+    padding: 3rem 1.5rem !important;
+    text-align: center;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .cart-drawer {
+    width: 100vw;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+    margin: 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .profile-tabs {
+    flex-direction: column !important;
+  }
+}
+
+/* Mobile Small (480px and down) */
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .product-price-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .price-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .floating-actions {
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  .toast-container {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .toast {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .ai-chat-window {
+    bottom: 4.5rem;
+    left: 1rem;
+    width: calc(100vw - 2rem);
+  }
+}
